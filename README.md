@@ -1,6 +1,5 @@
 # remoteDB
-remoteDB is my tentative definition of a 'good' Data Base for IRP storage, to work with irp_classes and build 'good' user-oriented 
-IR applications. 
-This DB can be used for WEB home applications, but also on more exigent conditions e.g. to do sites like irdb that creates data set 
-and raw codes on demand.
-
+This is my attempt to define a 'good' database for IRPs and to use with irp_classes (https://github.com/msillano/irp_classes)
+It must be a starting point for building home automation applications.
+As a demo of remoteDB capabilities, this is an application to perform a simple replica of standard IR remote controls.
+You can see it as an example of using remoteDB and the included php libraries you can use in your IR applications.
