@@ -4,4 +4,4 @@ It must be a starting point for building home automation applications.
 As a demo of remoteDB capabilities, this is an application to perform a simple replica of standard IR remote controls.
 You can see it as an example of using remoteDB and the included php libraries you can use in your IR applications.
 
-![Screenshot 2](./documents/remotesDB/screen02.png)
+![Screenshot 1](./documents/remotesDB/screen01.png)
