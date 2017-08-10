@@ -21,24 +21,24 @@ index -
     <link rel="stylesheet" type="text/css" href="./css/style.css"> </head>
 
 <body>
-    <h1> Management and test of <code>remoteDB</code> </h1>
-    <div class='note'> <code><b>remoteDB</b></code> is my tentative definition of a 'good' Data Base for IRP storage, to work with irp_classes and build 'good' user-oriented IR applications.
+    <h1> Management and test of <code>remotesDB</code> </h1>
+    <div class='note'> <code><b>remotesDB</b></code> is my tentative definition of a 'good' Data Base for IRP storage, to work with irp_classes and build 'good' user-oriented IR applications.
         <br> This DB can be used for WEB home applications, but also on more exigent conditions e.g. to do sites like <a href="http://irdb.tk/find/">irdb</a> that creates data set and raw codes on demand.
         <ul>
             <li>Stores IRP and commands, in 4 formats: 'HEX' (0x003E20), protocol and device 'DATA SET' ('F=2') and RAW-1.
             <li>Because it stores RAW commands, you can implement 'learn and repeat' strategies in case of unknown IRP.
-            <li><code>remoteDB</code> can handle IR 'universal' controls, using idRemote + 'code' as PK.
+            <li><code>remotesDB</code> can handle IR 'universal' controls, using idRemote + 'code' as PK.
             <li>Stores also UI oriented informations, like remote controls layouts.
             <li>Stores generic reference data, like photos and documentation or external urls.                              
-            <li><code>remoteDB</code> uses views and stored procedures to make it easy to write custom applications. 
+            <li><code>remotesDB</code> uses views and stored procedures to make it easy to write custom applications. 
         </ul> 
-        Some demo pages illustrates the features of <code>remoteDB</code>.
+        Some demo pages illustrates the features of <code>remotesDB</code>.
     </div>
     <hr>
     <div class='note'>
         <h3>Management tools:</h3> This IR remote controls database can be filled using standard applications, like phpMyAdmin or custom CRUD programs.
-        <BR> How it works, you can see looking at some demo tools that I wrote to populate and test the <code>remoteDB</code>.<br> The php code is layered: low-level access to db is in <code>irp_commonSQL</code>, tools for <code>remoteDB</code> are in <code>irp_remoteDB_tools</code>,<code>irp_remoteDB_raw</code> and <code>irp_remoteDB_stream</code>. They are setter and getter functions, and php wrapper to hi-level stored procedures.
-        <br>An informal introduction to <code>remoteDB</code> concepts can be found <a href='./documents/remoteDB/remoteDB-concepts1.pdf' target="_blank">here</a>, or you can look at  <a href='./documents/remoteDB/remoteDB-concepts2.pdf' target="_blank">logical shema</a>.  </div>
+        <BR> How it works, you can see looking at some demo tools that I wrote to populate and test the <code>remotesDB</code>.<br> The php code is layered: low-level access to db is in <code>irp_commonSQL</code>, tools for <code>remotesDB</code> are in <code>irp_remoteDB_tools</code>,<code>irp_remoteDB_raw</code> and <code>irp_remoteDB_stream</code>. They are setter and getter functions, and php wrapper to hi-level stored procedures.
+        <br>An informal introduction to <code>remotesDB</code> concepts can be found <a href='./documents/remoteDB/remoteDB-concepts1.pdf' target="_blank">here</a>, or you can look at  <a href='./documents/remoteDB/remoteDB-concepts2.pdf' target="_blank">logical shema</a>.  </div>
     <DL>
         <DT><A href="test_keyfromfile.php">Use a text file to fill the <code>irp_actions</code> table</A></DT>
         <DD>A list of standard KEY_NAMES and their texts for UI is read and the DB is updated
@@ -62,7 +62,7 @@ index -
     </DL>
     <BR>
     <div class='note'>
-        <h3>User interface test:</h3> The <b>remoteDB</b> is very complete and can be used in many different ways. This DB is IRP/application oriented, and it is born to be used with <code>IRP_classes</code> to build smart home automation applications.
+        <h3>User interface test:</h3> The <b>remotesDB</b> is very complete and can be used in many different ways. This DB is IRP/application oriented, and it is born to be used with <code>IRP_classes</code> to build smart home automation applications.
         <br> The use of php and mySQL and the web interface make it easy to write your custom applications. The management phase is 'una tantum', so it can be crude, but the applications must be very user friendly.
         <br> As demo I make 2 examples, and together they are a (quasi) complete application: one page allows you to capture and store streams from a real IR Remote Control (learning) while the second page allows you to send IR commands to devices by clicking an universal simulate Remote Control, that can simulate any control in DB. Of course you can do that also from your smart-phone. </div>
     <DL>
@@ -83,7 +83,7 @@ index -
      This demo use  <a href="https://github.com/msillano/irp_classes">irp_classes</a> and requires Arduino and serial php.<br>
      Download irp_classes and copy it in <code>.../www/phpIRPlib/</code>. Download <a href="http://www.thebyteworks.com/">PHP serial</a> free and install it.<br>
      Arduino schema and sketch are in https://github.com/msillano/irp_classes/tree/master/Arduino, it requires <a href="https://github.com/cyborg5/IRLib2">IRlib2</a>.<hr>
-     If you like to test the remoteDB demo without hardware and without serial, replaces in files <code>usr_simplerawRX.php</code> and <code>usr_simpleSerialTX.php</code> the include: <code>require_once ("$d/../phpIRPlib/irp_rxtxArduino.php");</code> with <code>require_once ("$d/irp_rxtxZero.php");</code>.<br>
+     If you like to test the remotesDB demo without hardware and without serial, replaces in files <code>usr_simplerawRX.php</code> and <code>usr_simpleSerialTX.php</code> the include: <code>require_once ("$d/../phpIRPlib/irp_rxtxArduino.php");</code> with <code>require_once ("$d/irp_rxtxZero.php");</code>.<br>
      If you have some different HW, you must rewrite <code>irp_rxtxArduino.php</code> to work with your IR rxtx.
 
      </div>
