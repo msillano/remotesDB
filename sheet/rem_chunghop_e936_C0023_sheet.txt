@@ -1,0 +1,72 @@
+#
+# 08/08/2017
+#
+# remote control brand:          CHUNGHOP
+# model no. of remote control:   E936
+# remote control modes:          T=TV|X=TXT|V=VCR|S=self
+# multi-remote codes:            stored 1
+# control documentation:         http://www.chunghop.com/en/product_detail.php?ProId=542
+# 
+# protocol:                      NEC1_16
+# protocol documentation:        ./documents/protocols/NEC1_16.html
+# 
+# devices being controlled by this remote:
+#     code = C0023               HITACHI CL32WF740AN
+# 
+#-------NAME------------------ROW---COL---MODE--------[action]|[[repeat] --- [[dataP]----[dataD]----[***]]|[raw]]
+ 
+
+  remote command code:  C0023
+
+  begin codes 
+        KEY_SETUP             1     1     S                                                        
+        KEY_POWER2            1     3     T             1     0AF5E817          {D=80,F=23}       *** 
+        KEY_TV                2     1     S                                                        
+        KEY_SAT               2     2     S                                                        
+        KEY_DVR               2     3     S                                                        
+        KEY_DVD               3     2     S                                                        
+        KEY_AUX               3     3     S                                                        
+        KEY_PREVIOUS          4     1     D                                                        
+        KEY_NEXT              4     2     D                                                        
+        UNK1_KEY              4     3     T             1     0AF542BD          {D=80,F=66}       *** 
+        KEY_SUBTITLE          4     4     D                                                        
+        KEY_TEXT              5     1     T             1     0AF5827D          {D=80,F=65}       *** 
+        KEY_AUDIO             5     2     T             1     0AF5E01F          {D=80,F=7}        *** 
+        KEY_EPG               5     3     D                                                        
+        KEY_FAVORITES         5     4     T             1     0AF526D9          {D=80,F=100}      *** 
+        KEY_MENU              6     1     T             1     0AF502FD          {D=80,F=64}       *** 
+        KEY_UP                6     2     T,X           1     0AF5D629          {D=80,F=107}      *** 
+        KEY_EXIT              6     3     T,V           1     0AF542BD          {D=80,F=66}       *** 
+        KEY_LEFT              7     1     T,X           1     0AF5B649          {D=80,F=109}      *** 
+        KEY_OK                7     2     T,X           1     0AF5C23D          {D=80,F=67}       *** 
+        KEY_RIGHT             7     3     T,X           1     0AF5F609          {D=80,F=111}      *** 
+        KEY_DOWN              8     2     T,X           1     0AF536C9          {D=80,F=108}      *** 
+        KEY_RED               9     1     T             1     0AF58877          {D=80,F=17}       *** 
+        KEY_GREEN             9     2     X             1     0AF57A85          {D=80,F=94}       *** 
+        KEY_YELLOW            9     3     X             1     0AF5BA45          {D=80,F=93}       *** 
+        KEY_BLUE              9     4     X             1     0AF53AC5          {D=80,F=92}       *** 
+        KEY_VOLUMEUP          10    1     T,X,V         1     0AF548B7          {D=80,F=18}       *** 
+        KEY_MUTE              10    2     T,X,V         1     0AF5D02F          {D=80,F=11}       *** 
+        KEY_CHANNELUP         10    3     T,X,V         1     0AF59867          {D=80,F=25}       *** 
+        KEY_VOLUMEDOWN        11    1     T,X,V         1     0AF5A857          {D=80,F=21}       *** 
+        KEY_INFO              11    2     T             1     0AF508F7          {D=80,F=16}       *** 
+        KEY_CHANNELDOWN       11    3     T,X,V         1     0AF518E7          {D=80,F=24}       *** 
+        KEY_BACK              12    1     T             1     0AF522DD          {D=80,F=68}       *** 
+        KEY_STOP              12    2     T             1     0AF508F7          {D=80,F=16}       *** 
+        KEY_FORWARD           12    3     T             1     0AF58877          {D=80,F=17}       *** 
+        UNK2_KEY              13    1     T             1     0AF510EF          {D=80,F=8}        *** 
+        KEY_PLAY              13    2     T             1     0AF5629D          {D=80,F=70}       *** 
+        KEY_PAUSE             13    3     T             1     0AF5C837          {D=80,F=19}       *** 
+        KEY_1                 14    1     T,X,V         1     0AF5B04F          {D=80,F=13}       *** 
+        KEY_2                 14    2     T,X,V         1     0AF5708F          {D=80,F=14}       *** 
+        KEY_3                 14    3     T,X,V         1     0AF5F00F          {D=80,F=15}       *** 
+        KEY_4                 15    1     T,X,V         1     0AF538C7          {D=80,F=28}       *** 
+        KEY_5                 15    2     T,X,V         1     0AF5B847          {D=80,F=29}       *** 
+        KEY_6                 15    3     T,X,V         1     0AF57887          {D=80,F=30}       *** 
+        KEY_7                 16    1     T,X,V         1     0AF5F807          {D=80,F=31}       *** 
+        KEY_8                 16    2     T,X,V         1     0AF520DF          {D=80,F=4}        *** 
+        KEY_9                 16    3     T,X,V         1     0AF5A05F          {D=80,F=5}        *** 
+        KEY_VIDEO             17    1     T,V           1     0AF522DD          {D=80,F=68}       *** 
+        KEY_0                 17    2     T,X,V         1     0AF530CF          {D=80,F=12}       *** 
+        KEY_DIGITS            17    3     T,V           1     0AF558A7          {D=80,F=26}       *** 
+    end codes 

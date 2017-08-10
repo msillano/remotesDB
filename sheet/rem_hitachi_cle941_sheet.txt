@@ -1,0 +1,72 @@
+#
+# 08/08/2017
+#
+# remote control brand:          HITACHI
+# model no. of remote control:   CLE941
+# remote control modes:          T=TV|X=TXT|V=VCR
+# control documentation:         ./documents/remotes/c28wf523n_instruction_manual.pdf
+# 
+# protocol:                      NEC1_16
+# protocol documentation:        ./documents/protocols/NEC1_16.html
+# 
+# devices being controlled by this remote:
+#                                HITACHI CL32WF740AN
+# 
+#-------NAME------------------ROW---COL---MODE--------[action]|[[repeat] --- [[dataP]----[dataD]----[***]]|[raw]]
+ 
+
+  begin codes 
+        KEY_POWER2            1     1     T,X,V         1     0AF5E817          {D=80,F=23}       *** 
+        KEY_SCREEN            2     2     T,V           1     0AF5FA05          {D=80,F=95}       *** 
+        KEY_MUTE              2     3     T,X,V         1     0AF5D02F          {D=80,F=11}       *** 
+        KEY_RED               3     1     T,X,V         1     0AF5728D          {D=80,F=78}       *** 
+        KEY_GREEN             3     2     T,X,V         1     0AF57A85          {D=80,F=94}       *** 
+        KEY_YELLOW            3     3     T,X,V         1     0AF5BA45          {D=80,F=93}       *** 
+        KEY_BLUE              3     4     T,X,V         1     0AF53AC5          {D=80,F=92}       *** 
+        KEY_VCR               4     1     T,X,V                                                    
+        UNK1_KEY              4     2     T,X,V         1     0AF5F20D          {D=80,F=79}       *** 
+        UNK2_KEY              4     3     T,X,V                                                    
+        KEY_UP                5     2     T,X           1     0AF5D629          {D=80,F=107}      *** 
+        KEY_PLAY              5     2     V             1     0AF5D629          {D=80,F=107}      *** 
+        KEY_LEFT              6     1     T,X           1     0AF5B649          {D=80,F=109}      *** 
+        KEY_BACK              6     1     V             1     0AF5B649          {D=80,F=109}      *** 
+        KEY_OK                6     2     T,X           1     0AF5C23D          {D=80,F=67}       *** 
+        KEY_PAUSE             6     2     V             1     0AF5C23D          {D=80,F=67}       *** 
+        KEY_RIGHT             6     3     T,X           1     0AF5F609          {D=80,F=111}      *** 
+        KEY_FORWARD           6     3     V             1     0AF5F609          {D=80,F=111}      *** 
+        KEY_DOWN              7     2     T,X           1     0AF536C9          {D=80,F=108}      *** 
+        KEY_STOP              7     2     V             1     0AF536C9          {D=80,F=108}      *** 
+        KEY_ESC               8     1     T,X,V         1     0AF52AD5          {D=80,F=84}       *** 
+        PSCAN100HZ_KEY        8     2     T,X,V         1     0AF5B24D          {D=80,F=77}       *** 
+        KEY_MENU              8     3     T,V           1     0AF502FD          {D=80,F=64}       *** 
+        FAV_PAGES_KEY         8     3     X             1     0AF502FD          {D=80,F=64}       *** 
+        KEY_VOLUMEUP          9     1     T,X,V         1     0AF548B7          {D=80,F=18}       *** 
+        KEY_CHANNELUP         9     3     T,X,V         1     0AF59867          {D=80,F=25}       *** 
+        KEY_VOLUMEDOWN        10    1     T,X,V         1     0AF5A857          {D=80,F=21}       *** 
+        KEY_CHANNELDOWN       10    3     T,X,V         1     0AF518E7          {D=80,F=24}       *** 
+        KEY_1                 11    1     A         1     0AF5B04F          {D=80,F=13}       *** 
+        KEY_2                 11    2     A         1     0AF5708F          {D=80,F=14}       *** 
+        KEY_3                 11    3     T,X,V         1     0AF5F00F          {D=80,F=15}       *** 
+        KEY_4                 12    1     T,X,V         1     0AF538C7          {D=80,F=28}       *** 
+        KEY_5                 12    2     T,X,V         1     0AF5B847          {D=80,F=29}       *** 
+        KEY_6                 12    3     T,X,V         1     0AF57887          {D=80,F=30}       *** 
+        KEY_7                 13    1     T,X,V         1     0AF5F807          {D=80,F=31}       *** 
+        KEY_8                 13    2     T,X,V         1     0AF520DF          {D=80,F=4}        *** 
+        KEY_9                 13    3     T,X,V         1     0AF5A05F          {D=80,F=5}        *** 
+        SWAP_KEY              14    1     T,X,V         1     0AF558A7          {D=80,F=26}       *** 
+        KEY_0                 14    2     A             1     0AF530CF          {D=80,F=12}       *** 
+        KEY_CHANNEL           14    3     T,V           1     0AF5C837          {D=80,F=19}       *** 
+        HOLD_KEY              14    3     X             1     0AF5C837          {D=80,F=19}       *** 
+        KEY_HOMEPAGE          15    1     X                                                        
+        KEY_SUBTITLE          15    2     X                                                        
+        KEY_TV                15    3     X                                                        
+        KEY_EXIT              15    3     T,V           1     0AF542BD          {D=80,F=66}       *** 
+        KEY_TEXT              15    4     X             1     0AF5827D          {D=80,F=65}       *** 
+        KEY_REPLY             16    1     X                                                        
+        KEY_MODE              16    1     T,V           1     0AF5A25D          {D=80,F=69}       *** 
+        KEY_VIDEO_PREV        16    2     X                                                        
+        KEY_TIME              16    2     T,V           1     0AF58877          {D=80,F=17}       *** 
+        KEY_ZOOM              16    3     X                                                        
+        KEY_INFO              16    3     T,V           1     0AF508F7          {D=80,F=16}       *** 
+        KEY_LANGUAGE          16    4     T,X,V         1     0AF5E01F          {D=80,F=7}        *** 
+    end codes 

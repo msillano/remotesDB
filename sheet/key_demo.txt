@@ -1,0 +1,63 @@
+#
+# 15/07/2017
+#
+# list of remote key names 
+# for demo. 
+# Complete list is 'key_full.txt'.
+#
+KEY_0                    0                   Keyboard digit 0
+KEY_1                    1                   Keyboard digit 1
+KEY_2                    2                   Keyboard digit 2
+KEY_3                    3                   Keyboard digit 3
+KEY_4                    4                   Keyboard digit 4
+KEY_5                    5                   Keyboard digit 5
+KEY_6                    6                   Keyboard digit 6
+KEY_7                    7                   Keyboard digit 7
+KEY_8                    8                   Keyboard digit 8
+KEY_9                    9                   Keyboard digit 9
+KEY_BACK                 BACK                Instantly go back in time
+KEY_BLUE                 BLUE                IR Blue key
+KEY_CHANNEL              CHANNEL             Change program/channel
+KEY_CHANNELDOWN          CHANNELDOWN         Decrease channel sequencially
+KEY_CHANNELUP            CHANNELUP           Increase channel sequencially
+KEY_DOWN                 DOWN                Down key
+KEY_ESC                  ESC                 Cancel current operation
+KEY_EXIT                 EXIT                Exit application, 
+KEY_FORWARD              FORWARD             Instantly advance in time
+KEY_GREEN                GREEN               IR Green Key
+KEY_HOMEPAGE             HOMEPAGE            Navigate to Homepage
+KEY_INFO                 INFO                Open On Screen Display (OSD)
+KEY_LANGUAGE             LANGUAGE            Select Language
+KEY_LEFT                 LEFT                Left key
+KEY_MENU                 MENU                Call application menu 
+KEY_MODE                 MODE                Change sound mode (MONO/STEREO/3DS)
+KEY_MUTE                 MUTE                Mute/unmute audio
+KEY_OK                   OK                  Send a confirmation code to application
+KEY_PAUSE                PAUSE               Pause sroweam
+KEY_PLAY                 PLAY                Play movie at the normal timeshift
+KEY_POWER                POWER               Turn on/off system (computer)
+KEY_POWER2               POWER2              Turn on/off application (TV,DVD..)
+KEY_RED                  RED                 IR Red key
+KEY_REPLY                REPLY               Show hidden text
+KEY_RIGHT                RIGHT               Right key
+KEY_STOP                 STOP                Stop sroweam  
+KEY_SUBTITLE             SUBTITLE            Turn on/off the subtitle (TELETEXT)
+KEY_SCREEN               SCREEN              Select screen aspect ratio (4:3/16:9)  
+KEY_TEXT                 TEXT                Activate/change closed caption mode (TELETEXT)
+KEY_TIME                 TIME                Activate time shift mode
+KEY_TV                   TV                  Select tv mode
+KEY_UP                   UP                  Up key
+KEY_VCR                  VCR                 Select VCR mode
+KEY_VIDEO                VIDEO               Alternate between input modes
+KEY_VIDEO_PREV           VIDEO_PREV          TV background on TELETEXT
+KEY_VOLUMEDOWN           VOLUMEDOWN          Decrease volume
+KEY_VOLUMEUP             VOLUMEUP            Increase volume
+KEY_YELLOW               YELLOW              IR Blue keyIR Yellow key 
+KEY_ZOOM                 ZOOM                Put device into zoom/full screen mode
+HOLD_KEY                 HOLD                'freeze' actual TELETEXT page
+FAV_PAGES_KEY            FAV_PAGES           Set favourite pages (TELETEXT)
+PSCAN100HZ_KEY           100HZ               100 Hz scan mode on/off
+SWAP_KEY                 SWAP                swap to previous channel/page
+UNK1_KEY                 UNK1                undocumented key
+UNK2_KEY                 UNK2                undocumented key
+SHOWTIME_KEY             SHOWTIME            Show time on screen
