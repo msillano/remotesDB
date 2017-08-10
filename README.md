@@ -6,7 +6,7 @@ As a demo of remotesDB capabilities, this is an application to perform a simple 
 ![Screenshot 1](./documents/remotesDB/screen01.png)
 
 # installation
-1) Copy everything in the web area of your WAMP server: e.g. ' ...\apache\htdocs\www\remoteDB'.
+1) Download and copy everything (all dirs and sub-dirs) in the web area of your WAMP server: e.g. ' ...\apache\htdocs\www\remoteDB'.
 2) You must also download irp_classes from https://github.com/msillano/irp_classes and install it in ' ...\apache\htdocs\www\phpIRPlib'
      -    note: Due to links and include, do not change 'remoteDB' and 'phpIRPlib' installation dirs.
 3) Create the demo DataBase 'remotesdb' with some data, importing in mySQL the file ...\www\remoteDB\sql\demo_remotesdb.sql
