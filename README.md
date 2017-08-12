@@ -3,6 +3,8 @@ This is my attempt to define a 'good' database for IRPs and to use with irp_clas
 It must be a starting point for building home automation applications.
 As a demo of remotesDB capabilities, this is an application to perform a simple replica of standard IR remote controls. You can see it as an example of using remotesDB and the included php libraries you can use in your IR applications.
 
+NOTE: For other technical documentation you can see the wiki.
+
 ![Screenshot 1](./documents/remotesDB/screen01.png)
 
 # installation
