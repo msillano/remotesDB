@@ -7,6 +7,15 @@ NOTE: For other technical documentation you can see the wiki.
 
 ![Screenshot 1](./documents/remotesDB/screen01.png)
 
+LIMITS
+ -  IRP: 1000 CHAR
+ -  RAW: 4000 CHAR 
+ -  data: 200 CHAR
+ -  Raw stream receive precision with Arduino uno Rev.3: +/- 2 microseconds
+ -  Raw transmit frequencies with Arduino uno Rev.3: 30KHz - 57 KHz
+ -  Raw receive buffer size with Arduino uno Rev.3: 300 samples
+ -  Raw transmit size with Arduino uno Rev.3: 300 samples
+ 
 # installation
 1) Download and copy everything (all dirs and sub-dirs) in the web area of your WAMP server: e.g. ' ...\apache\htdocs\www\remoteDB'.
 2) You must also download irp_classes from https://github.com/msillano/irp_classes and install it in ' ...\apache\htdocs\www\phpIRPlib'
