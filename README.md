@@ -16,6 +16,13 @@ LIMITS
  -  Raw receive buffer size with Arduino uno Rev.3: 300 samples
  -  Raw transmit size with Arduino uno Rev.3: 300 samples
  
+ WORK IN PROGRESS
+ This is a work in progress project:
+ 
+ 1) irp_classes (https://github.com/msillano/irp_classes): base classes and libray to work with IRP and RAW IR streams. Demo:  (receive) + decode and analyse IR commands.
+ 
+ 2) remotesDB (https://github.com/msillano/remotesDB):  MySQL DB for IRP applications and related php tools. Demo: replica of any remote control in DB.
+
 # installation
 1) Download and copy everything (all dirs and sub-dirs) in the web area of your WAMP server: e.g. ' ...\apache\htdocs\www\remoteDB'.
 2) You must also download irp_classes from https://github.com/msillano/irp_classes and install it in ' ...\apache\htdocs\www\phpIRPlib'
