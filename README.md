@@ -16,8 +16,7 @@ LIMITS
  -  Raw receive buffer size with Arduino uno Rev.3: 255 samples
  -  Raw transmit size with Arduino uno Rev.3: 255 samples
  
- WORK IN PROGRESS
- This is a work in progress project, now composed of following modules
+ WORK IN PROGRESS project, now composed of following modules:
  
  1) irp_classes (https://github.com/msillano/irp_classes): base classes and libray to work with IRP and RAW IR streams. Demo:  (receive) + decode and analyse IR commands.
  
