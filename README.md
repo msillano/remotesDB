@@ -13,15 +13,19 @@ LIMITS
  -  data: 200 CHAR
  -  Raw stream receive precision with Arduino uno Rev.3: +/- 2 microseconds
  -  Raw transmit frequencies with Arduino uno Rev.3: 30KHz - 57 KHz (dc 33%)
- -  Raw receive buffer size with Arduino uno Rev.3: 300 samples
- -  Raw transmit size with Arduino uno Rev.3: 300 samples
+ -  Raw receive buffer size with Arduino uno Rev.3: 255 samples
+ -  Raw transmit size with Arduino uno Rev.3: 255 samples
  
  WORK IN PROGRESS
- This is a work in progress project:
+ This is a work in progress project, now composed of following modules
  
  1) irp_classes (https://github.com/msillano/irp_classes): base classes and libray to work with IRP and RAW IR streams. Demo:  (receive) + decode and analyse IR commands.
  
  2) remotesDB (https://github.com/msillano/remotesDB):  MySQL DB for IRP applications and related php tools. Demo: replica of any remote control in DB.
+ 
+ 3) remotesDBdiscovery (https://github.com/msillano/remotesDB):  This extension of remotesDB is for the management of new remote controls, with 100+ IRP
+ 
+ 4) USBphpTunnel_fifo (https://github.com/msillano/USBphpTunnel_fifo): This Android app allows you to use a TVbox (e.g. MXQ) as stand alone web server running remotesDB, talking via USB with an Arduino board as IR interface.
 
 # installation
 1) Download and copy everything (all dirs and sub-dirs) in the web area of your WAMP server: e.g. ' ...\apache\htdocs\www\remoteDB'.
