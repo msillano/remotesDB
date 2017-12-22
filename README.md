@@ -13,8 +13,8 @@ LIMITS
  -  data: 200 CHAR
  -  Raw stream receive precision with Arduino uno Rev.3: +/- 2 microseconds
  -  Raw transmit frequencies with Arduino uno Rev.3: 30KHz - 57 KHz (dc 33%)
- -  Raw receive buffer size with Arduino uno Rev.3: 255 samples
- -  Raw transmit size with Arduino uno Rev.3: 255 samples
+ -  Raw receive buffer size with Arduino uno Rev.3: 255 (max 300) samples
+ -  Raw transmit size with Arduino uno Rev.3: 255 (max 300) samples
  
  WORK IN PROGRESS project, now composed of following modules:
  
