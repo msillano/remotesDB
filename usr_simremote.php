@@ -169,7 +169,7 @@ for ($r=1; $r <= $numrow; $r++){
 			$key = $remote[$i]['key'];
 			$table .='<td class=\''.$remote[$i]['class'].'\' title=\''.$tooltip.'\'>';
 // the url to send this key      
-	    $starturl  = "usr_simpleSerialTX.php?iddevice=$iddevice&idremote=$idremote&key=$key";
+	    $starturl  = "usr_simplerawTX.php?iddevice=$iddevice&idremote=$idremote&key=$key";
 	    if ($idStrStatus != NULL) $starturl .= "&idstore=$idStrStatus";   // if status add status idstream
       if ($remote[$i]['clickAction'] == NULL) {
            // is a stic key? add idstream

@@ -71,7 +71,7 @@ function sql($statment){
 // ================================== sql to arrays	 
  
 // low-level DB read using SQL.
-// return only a  value
+// return only a  value or NULL
 function sqlValue($query) {
   $result =  sql($query);
   $row = mysql_fetch_row($result);	   
@@ -130,20 +130,20 @@ function sqlLookup($query) {
 }    
  
 // HTML from DB read using SQL.
-// for combo input, options from a query (id, value), optional select key
+// for combo input, options from a query (id, value), optional selected key/value
 //  return HTML option list
-function optionsList($query, $selected = -1){     		
+function optionsList($query, $selected = NULL){     		
      $options = '';
      $ops = sqlLookup($query);    
      while (list($chiave, $valore) = each($ops)) {   
-        $options .= "<option value='$chiave' ".($chiave == $selected ? ' selected = "selected"':'')." >$valore</option>\n";
+        $options .= "<option value='$chiave' ".(($chiave == $selected) || ($valore == $selected) ? ' selected = "selected"':'')." >$valore</option>\n";
      }
      return $options;
 }               
                 
 // HTML from DB read using SQL.
 // for checklist, return complete HTML
-// from a query (key, value), checkbox_name, list_of_keys|true|false*)                      
+// from a query (key, value), checkbox_name, array_of_keys|true|false)                      
 function checkList($query,$name,$checked = false){     
      $check = '';
      $ops = sqlLookup($query);   
@@ -170,7 +170,7 @@ function optionsNList($from, $to, $selected){
      return $options;
 }        
  
- function StyleSheet(){
+function StyleSheet(){
 	return '<link rel="stylesheet" type="text/css" href="./css/style.css">';
 }
 

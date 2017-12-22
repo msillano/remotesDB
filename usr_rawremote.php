@@ -1,14 +1,13 @@
  <?php
  /*
-  usr_rawremote
-  Copyright (c) 2017 Marco Sillano.  All right reserved.
-
-  This library is free software; you can redistribute it and/or
+  usr_rawremote.php - This file is part of remoteDB.
+  
+  remoteDB is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
   License as published by the Free Software Foundation; either
-  version 2.1 of the License, or (at your option) any later version.
+  version 2 of the License, or (at your option) any later version.
 
-  This library is distributed in the hope that it will be useful,
+  remoteDB is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
   Lesser General Public License for more details.
@@ -16,11 +15,13 @@
   You should have received a copy of the GNU Lesser General Public
   License along with this library; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+  --------
+  Copyright (c) 2017 Marco Sillano.  All right reserved.
+ */
 	$d=dirname(__FILE__);
 	require_once ("$d/irp_commonSQL.php");
 	require_once ("$d/irp_remotedb_tools.php");
-  require_once ("$d/../phpIRPlib/irp_classes.php");
+    require_once ("$d/../phpIRPlib/irp_classes.php");
 //
 // This is an example of 'learning' strategy. Choose and press a key on simulate remote.
 // Wait...When Arduino red led  stop blinking and it is on, you press same key on simulated remote control.
@@ -47,9 +48,9 @@ A:hover { COLOR: blue; TEXT-DECORATION: none; font-weight: bold }
 echo '</head><body>';
 if (!(isset($_GET['protocol']) && isset($_GET['remote'])&& isset($_GET['code']))){
 	 	  echo "<div class=Error>";
-			echo  "ERROR: missed values...";
-			echo "</div>";
-			exit;
+		  echo  "ERROR: missed values...";
+		  echo "</div>";
+		  exit;
 }
 //
 $idremote = $_GET['remote'];
@@ -100,14 +101,14 @@ if (count($modes) > 1){
 		echo "<input type='radio' name='mode' value='$key' > &nbsp;".$modes[$key]."&nbsp;&nbsp;&nbsp;&nbsp;";
 	  }
 	}
-	echo "<input type='SUBMIT' name='changemode' value='CANGE'></form> ";
+	echo "<input type='SUBMIT' name='changemode' value='CHANGE'></form><hr> ";
 }
 //
  echo getSimulateRemote($idremote,$idprotocol, $code, $actualmode );
 // page done
- echo '<center><<<  <a  href="test_captureraw.php" >Back</a>	</center><br>
- </body>
-</html>';
+ echo "<hr>";
+ echo '<script src="footer.js"></script> ';
+ echo '</body></html>';
 
 // ----------------------------------
 function getSimulateRemote($idremote, $idprotocol, $code='0', $mode='A'){
@@ -116,10 +117,9 @@ $remotekeys = sqlArrayTot("SELECT row, col, keyname AS 'key', screen, idstream, 
             IF(idstream <=> NULL, 'keyx', 'key') AS 'class'
             FROM view_remotesheet  WHERE (code = '$code' OR code IS NULL)
 			      AND idremote = $idremote AND (('$mode'='A') OR (mode='A') OR (INSTR(mode,'$mode') >0)) ORDER BY row, col ;");
-
+// echo "<pre>"; print_r($remotekeys); echo "</pre>";
 list($numcol,$numrow) = sqlRecord("SELECT max(col), max(row) FROM irp_remkeys WHERE idremote = $idremote ;");
-				   
-$table ='<table border=0 style= "border: solid 1px #8064a2;">';
+$table ='<table border=0 style= "border: solid 1px #8064a2; background:">';
 $i =0;
 for ($r=1; $r <= $numrow; $r++){
 	$table .='<tr style="height:48px;">';
@@ -133,10 +133,10 @@ for ($r=1; $r <= $numrow; $r++){
 			$table .='<td class=\''.$remotekeys[$i]['class'].'\'><a href="usr_simplerawRX.php?protocol='.($idprotocol == NULL ? 'none': $idprotocol).'&remote='.$idremote.'&code='.$code.'&mode='.$mode.'&key='.$key.'">'.$ks."</a></td>";
 			if ($i <(count($remotekeys) -1)) $i++;
 	   }else{
-			$table .='<td>&nbsp;</td>';
+			$table .="<td class='nokey' >&nbsp;</td>";
 	   }
 	}
-	$table .="<td  class='nokey' >&nbsp;</td>";
+	//  $table .="<td >&nbsp;</td>";
 	}
 return $table.'</table>';
 }

@@ -88,12 +88,12 @@ function processNewStream($streamRecord){
 		  }
  $idprotocol = $streamRecord['idprotocol']; 
  $useIRP = sqlValue("SELECT IRP FROM irp_protocols WHERE idprotocol = ".($idprotocol == NULL?'NULL':$idprotocol));
- if ($useIRP == ''){
+ if ($useIRP == NULL){
  //------- no IRP, only RAW
- 		   $oldstream = getSameStream4Raw($streamRecord['RAW1']);
+	   $oldstream = getSameStream4Raw($streamRecord['RAW1']);
        if (((int)$oldstream > 0) && ($oldstream != $idstream)) {
 // exist?  replace			   
-		        sql("CALL replacestream($oldstream, $idstream)");  // stored procedure
+		    sql("CALL replacestream($oldstream, $idstream)");  // stored procedure
             return true;
             }
       $crc  = getCRCRAW($streamRecord['RAW1']);
@@ -101,8 +101,9 @@ function processNewStream($streamRecord){
 		  return true;
 	 }
 //-------- with IRP	
+  echo 'with IRP <br>';
 	 $theProtocol = new irp_protocol($useIRP);
-   $hex   = NULL;
+     $hex   = NULL;
 	 $raw1  = NULL;
 	 $dataP = NULL;
 	 $data  = array();
@@ -137,29 +138,7 @@ function processNewStream($streamRecord){
 				return true;
 				}			 
 			}	
-    else if ($streamRecord['HEX'] != ''){ 
-		// fill starting from HEX (encode)
-			 $theProtocol->setOutputRaw();
-			 $hex  = $streamRecord['HEX'];
-			 $raw  = $theProtocol->encodeRaw($hex,1);       // HEX  -> RAW0
-			 $theProtocol->decodeRaw($raw);                 // RAW0 -> DATASET
-			 $result = $theProtocol->dataVerify(false);
-             $data = irp_explodeVerify($result);			 
-			 if ($data['dataOK'] != 'true'){  // error in data
-                     sql("CALL limitdeletestream($idstream,NULL,NULL,NULL,NULL)");   
-			         return false;
-			         }	
-		     $dataP = $data['dataProtocol'];
-			 $raw  = $theProtocol->encodeRaw($dataP, $streamRecord['repeat']);
-			 $raw1 = $theProtocol->RAWprocess($raw, 1);     // DATASET -> RAW1
-			 $oldstream = getSameStream4Raw($raw1);
-             if (((int)$oldstream > 0) && ($oldstream != $idstream)) {
-// exist?  replace			   
-				sql("CALL replacestream($oldstream, $idstream)");
-				return true;
-				}
-		 }
-	 else if ($streamRecord['RAW1'] != ''){			 
+ 	 else if ($streamRecord['RAW1'] != ''){			 
 			// fill starting from RAW
 			$theProtocol->setOutputRaw();
 			$theProtocol->decodeRaw($streamRecord['RAW1']);  // RAW -> DATASET
@@ -181,7 +160,30 @@ function processNewStream($streamRecord){
 			$theProtocol->setOutputBin();
 			$bindata = $theProtocol->encodeRaw($dataP, 1);
 			$hex = $theProtocol->RAWprocess($bindata, 1);  // DATASET-> HEX
-			 }		 
+			 }	
+   else if ($streamRecord['HEX'] != ''){ 
+		// fill starting from HEX (encode)
+			 $theProtocol->setOutputRaw();
+			 $hex  = $streamRecord['HEX'];
+			 $raw  = $theProtocol->encodeRaw($hex,1);       // HEX  -> RAW0
+			 $theProtocol->decodeRaw($raw);                 // RAW0 -> DATASET
+			 $result = $theProtocol->dataVerify(false);
+             $data = irp_explodeVerify($result);			 
+			 if ($data['dataOK'] != 'true'){  // error in data
+                     sql("CALL limitdeletestream($idstream,NULL,NULL,NULL,NULL)");   
+			         return false;
+			         }	
+		     $dataP = $data['dataProtocol'];
+			 $raw  = $theProtocol->encodeRaw($dataP, $streamRecord['repeat']);
+			 $raw1 = $theProtocol->RAWprocess($raw, 1);     // DATASET -> RAW1
+			 $oldstream = getSameStream4Raw($raw1);
+             if (((int)$oldstream > 0) && ($oldstream != $idstream)) {
+// exist?  replace			   
+				sql("CALL replacestream($oldstream, $idstream)");
+				return true;
+				}
+		 }
+		 
 // updates		 
        	$crc   = getCRCRAW($raw1);
 		sql("UPDATE irp_streams SET HEX='$hex',dataProtocol='$dataP',dataDevice=".($data['dataDevice']=='{}'?'NULL':"'".$data['dataDevice']."'").",CRCRAW='$crc',RAW1='$raw1' WHERE idstream=$idstream");

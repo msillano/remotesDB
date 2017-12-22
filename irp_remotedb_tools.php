@@ -256,7 +256,7 @@ function setKeyRemote ($key, $ui = NULL, $notes = NULL, $idrem = NULL, $row = NU
 //  no protocol, protocol unknown =>  idprotocol = NULL (but it try to fix it)
 function setStreamKeyRemote($idrem, $code, $key, $raw = NULL, $idprot= NULL, $hex = NULL, $repeat = NULL, $dataP = NULL, $dataD = NULL){
  	// stops here if no data
-	echo "setStreamKeyRemote($idrem, $code, $key, $raw , $idprot, $hex, $repeat , $dataP , $dataD ) <br>";
+//	echo "setStreamKeyRemote($idrem, $code, $key, $raw , $idprot, $hex, $repeat , $dataP , $dataD ) <br>";
 	if (( $hex == NULL) && ($raw == NULL)) return;
     setKeyRemote ($key, NULL, NULL, $idrem);  // inserts (if it is the case) irp_actions, irp_remkeys, no update
    //try to fix idprot, if NULL, forcing
@@ -346,9 +346,9 @@ function doLimitDeleteStream($idstream, $idremote=NULL, $iddevice=NULL, $code=NU
 	 
 // ============================================  conventions, dir and file names, keyname
  
-$SHEETDIR = '\\sheet\\';
+$SHEETDIR =  DIRECTORY_SEPARATOR.'sheet'.DIRECTORY_SEPARATOR;
 $SHEETEXT = '_sheet.txt';
-$ICONDIR  = '\\icons\\';
+$ICONDIR  =  DIRECTORY_SEPARATOR.'icons'.DIRECTORY_SEPARATOR;
 $ICONEXT  = '.png';
 
 function getRemoteFileSheetURL($idremote, $code = '0'){

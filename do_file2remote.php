@@ -41,7 +41,7 @@ if (isset($_GET['code'])) {
 } else {
     $codes = getCodesOptionList4Rem($idremote);
  // no codes   
-    if ((isset($_GET['toFile'])) && ($codes == '')) {
+ if ((isset($_GET['toFile'])) && ($codes == '')) {
         echo "<div class='error'>";
         echo 'WARNING: This Remote control as not code association in remotesDB <br>';
         echo ' </div>';
@@ -55,7 +55,8 @@ if (isset($_GET['code'])) {
         echo 'This <b>IR Remote Control</b> is  multiple. You must select a code:';
         echo '<input type="hidden" name ="remote" value="' . $idremote . '">';
         echo '<input type="hidden" name ="protocol" value="' . $idprotocol . '">';
-        echo '<input type="hidden" name ="fname" value="' . $_GET['fname'] . '">';
+        if (isset($_GET['fname']))
+            echo '<input type="hidden" name ="fname" value="' . $_GET['fname'] . '">';
         if (isset($_GET['lircm']))
             echo '<input type="hidden" name ="lircm" value="go">';
         if (isset($_GET['toFile']))
@@ -68,7 +69,8 @@ if (isset($_GET['code'])) {
         echo "<select name='code' value='0' >";
         echo $codes;
         echo "</select><br><hr><input type='submit' value=' Done '><br> </form>";
-        echo '</div></body></html><hr><center><<< <a  href="test_file2remote.php" >Back</a></center></body></html>';
+ 	    echo '<hr><center> <a href="javascript:history.go(-1)"><<< back </a> </center>';
+		echo '</body></html>';
         exit;
     }
 }
@@ -83,7 +85,8 @@ if (isset($_GET['lircm']) || isset($_GET['lircc'])) {
         echo "<div class='Error'>";
         echo "ERROR: lirc file not found!:<br>";
         echo '<code>' . $lircfile . '</code><br>';
-        echo '</div></body></html><hr><center><<< <a  href="test_file2remote.php" >Back</a></center></body></html>';
+        echo '</div></body></html><hr><center><<< <a  href="test_file2remote.php" >Back</a></center>';
+		echo '</body></html>';
         exit;
     }
 }
@@ -94,7 +97,8 @@ if (isset($_GET['merge']) || isset($_GET['copy'])) {
         echo "<div class=Error>";
         echo "ERROR: file not found! Export it before.<br>";
         echo '<code>' . $infile . '</code><br>';
-        echo '</div></body></html><hr><center><<< <a  href="test_file2remote.php" >Back</a></center></body></html>';
+	    echo '<hr><center> <a href="javascript:history.go(-1)"><<< back </a> </center>';
+		echo '</body></html>';
         exit;
     }
  }
@@ -107,8 +111,9 @@ if (isset($_GET['merge']) || isset($_GET['copy']) || isset($_GET['toFile'])){
       }
    if ($idprotocol == NULL){
       echo "<div class=Error>";
-      echo "ERROR: Unknown protocol.<br>For the control#$idremote and the code '$code' do not exist a record on <code>irp_remdev</code> table.<BR>";
-      echo '</div></body></html><hr><center><<< <a  href="test_file2remote.php" >Back</a></center></body></html>';
+      echo "ERROR: Unknown protocol.<br>For the control #$idremote and the code '$code' do not exist a record on <code>irp_remdev</code> table.<BR>";
+      echo '</div></body></html><hr><center><<< <a  href="test_file2remote.php" >Back</a></center>';
+	  echo '</body></html>';
       exit;
    }
 }
@@ -127,10 +132,8 @@ if (isset($_GET['toFile'])) { // to file sheet
 if (isset($_GET['copy'])) { // II  pass
     delete_remkeys_extra_force($listkeys, $idremote, $code);
 }
-echo '<hr> 
-		 <center><<<  <a  href="test_file2remote.php" >Back</a>	</center>
-	</body>
-</html>';
+echo '<hr><center> <a href="javascript:history.go(-1)"><<< back </a> </center>';
+echo '</body></html>';
 exit;
 
 // ================================================== import/export functions
@@ -179,7 +182,7 @@ function export_remote_to_sheet($idremote, $idprotocol, $code)
     }
     //
     $keyout = array();
-    $dataout .= "#-------NAME------------------ROW---COL---MODE--------[action]|[[repeat] --- [[dataP]----[dataD]----[***]]|[raw]]\r\n";
+    $dataout .= "#-------NAME------------------ROW---COL---MODE-- [action]|[[repeat]-- [[hex]---[dataP]---[dataD]---[***]]|[raw]]\r\n";
     $dataout .= " \r\n";
     $dataout .= "\r\n";
     if ($code != '0') {

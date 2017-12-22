@@ -19,8 +19,8 @@ do_fillupd -
 */
 	$d=dirname(__FILE__);
 	require_once ("$d/irp_commonSQL.php");
+  require_once ("$d/../phpIRPlib/irp_classes.php");
 	require_once ("$d/irp_remotedb_tools.php");
-    require_once ("$d/../phpIRPlib/irp_classes.php");
 	require_once ("$d/irp_remotedb_stream.php");
 //	
 // functions:
@@ -53,17 +53,22 @@ if(isset($_GET['code'])){
 		echo '<input type="hidden" name ="do" value="'.$_GET['do'].'">';
 		echo	'&nbsp;';
 		echo	"<select name='code'>";
-	  echo  "<option value='0'  selected = 'selected' >0 - default </option>";
-   	echo	$codes; 
-		echo	"</select><br><hr><input type='submit' value=' Done '><br> </form></div></body></html>";
-		exit;		
+        echo	$codes; 
+		echo	"</select><br><hr><input type='submit' value=' Done '><br> </form></div>";
+		echo '<hr><center> <a href="javascript:history.go(-1)"><<< back </a> </center>';
+        echo '</body></html>';
+        exit;
 	}
 }
 
- if ( $_GET['do'] == 'streams' || $_GET['do'] == 'both') 
+ if ( $_GET['do'] == 'streams' || $_GET['do'] != 'device') 
     fillStreamData($idremote, $code);
- if ( $_GET['do'] == 'device' ||  $_GET['do'] == 'both') 
+ if ( $_GET['do'] == 'device' ||  $_GET['do'] != 'streams') 
     updateDeviceData($idremote, $code);
+ echo '<hr><center> <a href="javascript:history.go(-1)"><<< back </a> </center>';
+ echo '</body></html>';
+ exit;
+
 	
 // =========================================== functions
  
@@ -75,7 +80,7 @@ if(isset($_GET['code'])){
 // echo $query .'<br>';			 
  	  $remotedata = sqlArrayTot($query);
 // echo 'found '.count($remotedata).'<br>';		  
-     $useProtocol = -1;
+    $useProtocol = -1;
 	  $totCount = 0;
 	  $updCount = 0;
 	  $delCount = 0;
@@ -125,12 +130,12 @@ if(isset($_GET['code'])){
 		else if ($acommand['dataProtocol'] != ''){
 		       	echo strspace("stream #$idstream",14 ).strspace($acommand['keyname'],22).' DATA Protocol processing: '; 
 				}
-	  else if ($acommand['HEX'] != ''){
-			      echo strspace("stream #$idstream",14 ).strspace($acommand['keyname'],22).' HEX processing: ';
-		    } 
 		else if ($acommand['RAW1'] != ''){
 		       	echo strspace("stream #$idstream",14 ).strspace($acommand['keyname'],22).' RAW processing: '; 
 				}
+	    else if ($acommand['HEX'] != ''){
+			      echo strspace("stream #$idstream",14 ).strspace($acommand['keyname'],22).' HEX processing: ';
+		    } 
 			
 	 if ( processNewStream($acommand) == false){
         echo ' *** NOT SAVED **** <br>'; 
@@ -153,7 +158,3 @@ if(isset($_GET['code'])){
         }
     }
 ?>
-	 <hr> 
-		 <center><<<  <a  href="test_fillUpd.php" >Back</a>	</center>
-	</body>
-</html>
