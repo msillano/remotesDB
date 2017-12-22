@@ -23,8 +23,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `remote2device`(IN idrem INT, IN xco
     COMMENT 'Updates irp_devcommands using remote commands and irp_devrem.'
 BEGIN
  DECLARE xmod1, xmod2, xmod3 CHAR(2);
- SELECT `mode1`, `mode2`, `mode2` INTO xmod1, xmod2, xmod3 FROM `remotesdb`.`irp_devrem` 
-    WHERE `iddevice` = idev AND `idremote` = idrem AND (xcode = '0' OR `remotesdb`.`irp_devrem`.`code` = xcode) LIMIT 1;
+ SELECT `mode1`, `mode2`, `mode2` INTO xmod1, xmod2, xmod3 FROM `irp_devrem` 
+    WHERE `iddevice` = idev AND `idremote` = idrem AND (xcode = '0' OR `irp_devrem`.`code` = xcode) LIMIT 1;
  INSERT INTO irp_devcommands SELECT idev, `irp_remkeys`.`keyname`, 'USE', `irp_remcommands`.`idstream`, 1, NULL 
      FROM irp_remkeys NATURAL LEFT JOIN irp_remcommands 
 	 WHERE `irp_remkeys`.`idremote`=idrem AND (xcode = '0' OR `irp_remcommands`.`code` = xcode OR `irp_remcommands`.`code` IS NULL ) AND

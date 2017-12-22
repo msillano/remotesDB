@@ -25,4 +25,29 @@ DROP VIEW IF EXISTS `view_remotesheet`;
 -- Struttura per la vista `view_remotesheet`
 --
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `remotesdb`.`view_remotesheet` AS select `remotesdb`.`irp_remkeys`.`idremote` AS `idremote`,`remotesdb`.`irp_remcommands`.`code` AS `code`,`remotesdb`.`irp_devrem`.`idprotocol` AS `idprotocol`,`remotesdb`.`irp_remkeys`.`keyname` AS `keyname`,`remotesdb`.`irp_actions`.`screen` AS `screen`,`remotesdb`.`irp_remkeys`.`idremkey` AS `idremkey`,`remotesdb`.`irp_remkeys`.`row` AS `row`,`remotesdb`.`irp_remkeys`.`col` AS `col`,`remotesdb`.`irp_remkeys`.`mode` AS `mode`,`remotesdb`.`irp_devcommands`.`iddevice` AS `iddevice`,`remotesdb`.`irp_devcommands`.`role` AS `role`,`remotesdb`.`irp_devcommands`.`drepeat` AS `drepeat`,`remotesdb`.`irp_streams`.`idstream` AS `idstream`,`remotesdb`.`irp_streams`.`repeat` AS `repeat`,`remotesdb`.`irp_remkeys`.`clickAction` AS `clickAction`,`remotesdb`.`irp_streams`.`HEX` AS `HEX`,`remotesdb`.`irp_streams`.`dataProtocol` AS `dataProtocol`,`remotesdb`.`irp_streams`.`dataDevice` AS `dataDevice`,`remotesdb`.`irp_streams`.`CRCRAW` AS `CRCRAW`,`remotesdb`.`irp_streams`.`RAW1` AS `RAW1` from (((((`remotesdb`.`irp_actions` join `remotesdb`.`irp_remkeys`) join `remotesdb`.`irp_devrem` on(((`remotesdb`.`irp_actions`.`keyname` = `remotesdb`.`irp_remkeys`.`keyname`) and (`remotesdb`.`irp_remkeys`.`idremote` = `remotesdb`.`irp_devrem`.`idremote`)))) left join `remotesdb`.`irp_remcommands` on((`remotesdb`.`irp_remkeys`.`idremkey` = `remotesdb`.`irp_remcommands`.`idremkey`))) left join `remotesdb`.`irp_streams` on((`remotesdb`.`irp_remcommands`.`idstream` = `remotesdb`.`irp_streams`.`idstream`))) left join `remotesdb`.`irp_devcommands` on(((`remotesdb`.`irp_devcommands`.`idstream` <=> `remotesdb`.`irp_remcommands`.`idstream`) and (`remotesdb`.`irp_devcommands`.`keyname` = `remotesdb`.`irp_remkeys`.`keyname`) and (`remotesdb`.`irp_devcommands`.`iddevice` = `remotesdb`.`irp_devrem`.`iddevice`)))) order by `remotesdb`.`irp_remkeys`.`idremote`,`remotesdb`.`irp_remcommands`.`code`,`remotesdb`.`irp_remkeys`.`row`,`remotesdb`.`irp_remkeys`.`col`,`remotesdb`.`irp_remkeys`.`mode`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_remotesheet` AS select 
+`irp_devrem`.`idremote` AS `idremote`,
+`irp_devrem`.`code` AS `code`,
+`irp_devrem`.`idprotocol` AS `idprotocol`,
+`irp_remkeys`.`keyname` AS `keyname`,
+`irp_actions`.`screen` AS `screen`,
+`irp_remkeys`.`idremkey` AS `idremkey`,
+`irp_remkeys`.`row` AS `row`,
+`irp_remkeys`.`col` AS `col`,
+`irp_remkeys`.`mode` AS `mode`,
+`irp_devcommands`.`iddevice` AS `iddevice`,
+`irp_devcommands`.`role` AS `role`,
+`irp_devcommands`.`drepeat` AS `drepeat`,
+`irp_streams`.`idstream` AS `idstream`,
+`irp_streams`.`repeat` AS `repeat`,
+`irp_remkeys`.`clickAction` AS `clickAction`,
+`irp_streams`.`HEX` AS `HEX`,
+`irp_streams`.`dataProtocol` AS `dataProtocol`,
+`irp_streams`.`dataDevice` AS `dataDevice`,
+`irp_streams`.`CRCRAW` AS `CRCRAW`,
+`irp_streams`.`RAW1` AS `RAW1` from 
+(((((`irp_actions` join `irp_remkeys`) join `irp_devrem` on(((`irp_actions`.`keyname` = `irp_remkeys`.`keyname`) and (`irp_remkeys`.`idremote` = `irp_devrem`.`idremote`))))
+    left join `irp_remcommands` on((`irp_remkeys`.`idremkey` = `irp_remcommands`.`idremkey`)))
+        left join `irp_streams` on((`irp_remcommands`.`idstream` = `irp_streams`.`idstream` AND `irp_remcommands`.`code` = `irp_devrem`.`code`))) 
+		   left join `irp_devcommands` on(((`irp_devcommands`.`idstream` <=> `irp_remcommands`.`idstream`) and (`irp_devcommands`.`keyname` = `irp_remkeys`.`keyname`) and (`irp_devcommands`.`iddevice` = `irp_devrem`.`iddevice`))))
+  order by `irp_remkeys`.`idremote`,`irp_remcommands`.`code`,`irp_remkeys`.`row`,`irp_remkeys`.`col`,`irp_remkeys`.`mode`;
