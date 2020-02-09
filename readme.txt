@@ -11,6 +11,9 @@ in this directory the demo files:
   test_xxxxx.php: main test pages, called by index.html
   usr_yyyyyy.php: pages used by test_xxxx
   do_yyyyyyy.php: pages used by test_xxxx
+  
+Update
+   - replace irp_commonSQ!L.php with common_pdo.php 
 
 -------------------------------------------
 INSTALLATION
